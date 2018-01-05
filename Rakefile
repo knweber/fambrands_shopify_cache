@@ -3,6 +3,7 @@ require "rake/testtask"
 require "sinatra/activerecord/rake"
 require_relative 'lib/models'
 require_relative 'lib/pull'
+require_relative 'lib/create_csv'
 
 ActiveRecord::Base.establish_connection ENV['DATABASE_URL']
 
@@ -37,4 +38,9 @@ end
 desc 'refresh collects cache from shopify'
 task :pull_collects do |t|
   pull_all(ShopifyAPI::Collect, Collect)
+end
+
+desc 'process unfulfilled orders and write to CSV'
+task :process_orders do |t|
+  create_orders
 end
