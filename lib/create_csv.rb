@@ -17,6 +17,7 @@ def create_orders
 
     unique_order_number = "#IN" + SecureRandom.random_number(36**12).to_s(36).rjust(12,"0")
 
+    # not really using these:
     # customer = order.customer
     # default_address = order.default_address
 
@@ -29,6 +30,17 @@ def create_orders
       variant_id = order.line_items[0]["variant_id"]
 
       props = order.line_items[0]["properties"]
+
+      i = 0
+      while i < props.length
+        if props[i]["name"] == "main-product" && props[i]["value"]
+          puts "Master Product"
+        end
+        if props[i]["name"] == "product_collection"
+          puts "Specific Collection: " + props[i]["value"]
+        end
+        i += 1
+      end
 
       sku = props["sku"]
       weight = props["weight"]
