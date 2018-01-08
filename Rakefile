@@ -27,7 +27,7 @@ end
 
 desc 'refresh product_variants collects cache from shopify'
 task :pull_product_variants do |t|
-  pull_all(ShopifyAPI::ProductVariant, ProductVariant)
+  pull_all(ShopifyAPI::Variant, ProductVariant)
 end
 
 desc 'refresh custom collections cache from shopify'
