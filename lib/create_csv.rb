@@ -57,6 +57,7 @@ def create_orders
         subtotal: order["subtotal_price"],
         total_discounts: order["total_discounts"],
         sku: sku,
+        variant_id: variant_id,
         weight: weight,
         weight_unit: weight_units,
         item_name: item_name,
